@@ -1,0 +1,30 @@
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fake-similarweb
+  labels:
+    app: fake-similarweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fake-similarweb
+  template:
+    metadata:
+      labels:
+        app: fake-similarweb
+    spec:
+      containers:
+      - name: fake-similarweb
+        image: feenix/fake-similarweb:1.0.0
+        ports:
+        - containerPort: 9081
+        resources:
+          limits:
+            cpu: "1"
+            memory: "200Mi"
+          requests:
+            cpu: "0.5"
+            memory: "100Mi"
